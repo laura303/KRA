@@ -10,7 +10,7 @@ require_once('rb.php');
 //If you work on Mac OSX or Linux (or another UNIX like system)
 //You can simply use this line:
 
-R::setup(); //This creates an SQLite database in /tmp
+R::setup("mysql:host=localhost;dbname=onepercen", "root", ""); //This creates an SQLite database in /tmp
 //R::setup('database.txt'); -- for other systems
 
 //Ready. Now insert a bean!
