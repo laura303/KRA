@@ -1,15 +1,15 @@
 <?php
-require_once 'auth/classes/Auth.class.php';
+require_once ('controllers_auth_AuthController.php');
 
 session_start();
-$auth = new Auth();
+$authController = new AuthController();
 
 if (!isset($_SESSION['user_id'])) {
 	//Not logged in, send to login page.
-	header( 'Location: index.html' );
+	header('Location: index.html');
 } else {
 	//Check we have the right user
-	$logged_in = $auth->checkSession();
+	$logged_in = $authController->checkSession();
 	if(empty($logged_in)){
 		//Bad session, ask to login
 		$auth->logout();
