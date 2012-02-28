@@ -6,7 +6,7 @@
 			<div class="box-head-light">Data Table<a href="" class="collapsable"></a></div>
 			<div class="box-content no-padding">
 				<form method="POST" action="." class="i-validate" novalidate="novalidate">
-					<input type="hidden" name="licence[type]" value="{$db_type}" />
+					<input type="hidden" name="licence[type]" value="licence" />
 					<fieldset>
 						{block 'form-items'}
 						{/block}

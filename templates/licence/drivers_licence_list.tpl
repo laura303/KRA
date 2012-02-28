@@ -11,7 +11,6 @@
 						<th>Applicant Name</th>
 						<th>Applicant Address</th>
 						<th>Licence Number</th>
-						<th>Certificate of Competence Number</th>
 						<th>Driving Test Date</th>
 						<th>Driving Test Place</th>
 					</tr>
@@ -22,16 +21,16 @@
 						<td>{$licence->applicant_name}</td>
 						<td>{$licence->address}</td>
 						<td>{$licence->licence_number}</td>
-						<td>{$licence->certificate_of_competence}</td>
 						<td>{$licence->driving_test_date}</td>
 						<td>{$licence->driving_test_place}</td>
 						<td>
 							<a href="{#BASE_URL#}/licences/{$licence->id}/">R</a> |
-							<a href="{#BASE_URL#}/licences/edit/{$licence->id}/">U</a> |
-							<a href="{#BASE_URL#}/licences/delete/{$licence->id}/">D</a>
+							<a href="{#BASE_URL#}/admin/licences/{$type}/{$licence->id}/edit/">U</a> |
+							<a href="{#BASE_URL#}/admin/licences/{$type}/{$licence->id}/delete/">D</a>
 						</td>
 					</tr>
 				{/foreach}
 			</table>
 		</div>
+	</div>
 {/block}

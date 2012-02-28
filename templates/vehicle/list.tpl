@@ -1,7 +1,7 @@
 {extends "base.tpl"}
 
 {block "body"}
-	<H2>Vehicles:</H2>
+	<H2>Vehicles:</H2><a href="{#BASE_URL#}/vehicles/add/" class="button">Add</a>
 	<table>
 		<tr>
 			<th>Id</th>

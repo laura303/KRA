@@ -36,19 +36,19 @@
 				   ->addDynamicElement( ":id", '^\d+$' );
 	$router->addRoute("licence-notification-listen",$licence_action);
 
-	$licence_edit = new Route("$BASE_URL/licences/:type/:id/edit/");
+	$licence_edit = new Route("$BASE_URL/admin/licences/:type/:id/edit/");
 	$licence_edit->setMapClass("Licence")->setMapMethod("edit")
 				   ->addDynamicElement( ":type", '^(drivers-licence|motor-vehicle|driving-instructor|psv-licences-badges)+$' )
 				   ->addDynamicElement( ":id", '^\d+$' );
 	$router->addRoute("licence-edit",$licence_edit);
 	
-	$licence_delete = new Route("$BASE_URL/licences/:type/:id/delete/");
+	$licence_delete = new Route("$BASE_URL/admin/licences/:type/:id/delete/");
 	$licence_delete->setMapClass("Licence")->setMapMethod("delete")
 				   ->addDynamicElement( ":type", '^(drivers-licence|motor-vehicle|driving-instructor|psv-licences-badges)+$' )
 				   ->addDynamicElement(":id", '^\d+$');
 	$router->addRoute("licence-delete",$licence_delete);
 	
-	$licence_action = new Route("$BASE_URL/licences/:type/:id/:action/");
+	$licence_action = new Route("$BASE_URL/admin/licences/:type/:id/:action/");
 	$licence_action->setMapClass("Licence")->setMapMethod("action")
 				   ->addDynamicElement( ":type", '^(drivers-licence|motor-vehicle|driving-instructor|psv-licences-badges)+$' )
 				   ->addDynamicElement( ":id", '^\d+$' )

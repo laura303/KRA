@@ -39,7 +39,7 @@ class Model_User extends RedBean_SimpleModel{
 			$groupNames=explode(",",$groupNames);
 		}
 		
-		$groups = R::find('group', 'slug IN ('.R::genSlots($groupNames).')', $groupNames);
+		$groups = R::find('group', 'name IN ('.R::genSlots($groupNames).')', $groupNames);
 		foreach($groups as $group){
 			if (R::areRelated($this->bean, $group)){
 				return true;

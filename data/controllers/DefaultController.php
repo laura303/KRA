@@ -16,8 +16,8 @@
 				redirectToPage('admin-dashboard');
 			}
 			
-			$smarty->assign("licences", $request->user->ownLicence);
-			$smarty->assign("applications", $request->user->ownLicence);
+			$smarty->assign("applications", R::find('licence', 'status = null and user = ? ', array($request->user)));
+			$smarty->assign("licences", R::find('licence', 'status = "approved" and user = ? ', array($request->user)));
 			$smarty->assign("request", $request);
 			$smarty->display('dashboard.tpl');
 		}

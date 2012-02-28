@@ -4,7 +4,7 @@
 			$request = $args["request"];
 
 			global $router, $smarty;
-			userIsAdmin($request->user);
+			checkLoggedIn($request->user);
 			
 			$dao = new AuthDAO();
 			
@@ -22,7 +22,7 @@
 				if(isset($request->POST["groups"])){
 					$group_ids = $request->POST["groups"];
 					if(count($group_ids)){
-						R::clearRelations($edited_user, 'group');
+						R::clearRelations($new_user, 'group');
 					}
 					foreach ($group_ids as $group_id){
 						$group = R::load('group', $group_id);
@@ -45,7 +45,7 @@
 		public function edit($args){
 			$request = $args["request"];
 			global $smarty;
-			userIsAdmin($request->user);
+			checkLoggedIn($request->user);
 			
 			$id = $args[":id"];
 			$user = R::load("user", $id);
@@ -87,7 +87,7 @@
 		
 		public function view($args){
 			$request = $args["request"];
-			userIsAdmin($request->user);
+			checkLoggedIn($request->user);
 			global $smarty;
 			
 			if ($request->method == "GET"){
@@ -108,7 +108,7 @@
 		
 		public function view_list($args){
 			$request = $args["request"];
-			userIsAdmin($request->user);
+			checkLoggedIn($request->user);
 			global $smarty;
 			
 			if ($request->method == "GET"){

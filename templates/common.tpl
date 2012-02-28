@@ -7,25 +7,22 @@
 			<div id="main-navigation">
 				<ul>
 					<li>
-						<a href="#dashboard" class="active" id="dashboard-m"><span class="dashboard-32" title="Dashboard area">Home</span></a>
+						<a href="{#BASE_URL#}/dashboard/" class="active" id="dashboard-m"><span class="dashboard-32" title="Dashboard area">Home</span></a>
 					</li>
 					<li>
-						<a href="#elements" id="elements-m"><span class="files-32" title="Elements area">Menu</span></a>
+						<a href="{#BASE_URL#}/applications/" id="elements-m"><span class="files-32" title="Elements area">Applications</span></a>
 					</li>
 					<li>
-						<a href="#forms" id="forms-m"><span class="forms-32" title="Forms area">Services</span></a>
+						<a href="{#BASE_URL#}/payments/" id="forms-m"><span class="forms-32" title="Forms area">Payments</span></a>
 					</li>
 					<li>
-						<a href="#file" id="file-m"><span class="file-32" title="File manager area">Feedback</span></a>
-					</li>
-					<li>
-						<a href="#charts" id="charts-m"><span class="charts-32" title="Charts area">Brochures</span></a>
+						<a href="{#BASE_URL#}/vehicles/" id="file-m"><span class="file-32" title="File manager area">Feedback</span></a>
 					</li>
 				</ul>
 			</div>
 			<div id="profile">
 				<div id="user-data">
-					Welcome: {$request->user->getFullName() || $request->user->username}
+					Welcome: {$request->user->username}
 					<br>
 					{$request->user->email}
 				</div>
