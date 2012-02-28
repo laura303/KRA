@@ -4,6 +4,7 @@
 	require_once("licences/urls.php");
 	require_once("clients/urls.php");
 	require_once("payments/urls.php");
+	require_once("mobile/urls.php");
 	require_once("search_urls.php");
 	
 	//setup the default url

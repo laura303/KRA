@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+	    <!--<meta name="viewport" content="width=250, initial-scale=1" />-->
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0;">
+	    <link rel="stylesheet" href="{#BASE_URL#}/static/mobile/css/style.css" type='text/css' />
+		<script type="text/javascript" src="{#BASE_URL#}/static/mobile/js/templates.js"></script>
+	   	<script type="text/javascript">
+			function init() {
+				var myStyleTweaks = new StyleTweaker();
+				myStyleTweaks.add("AppleWebKit/420+", "{#BASE_URL#}/static/mobile/css/S40webkit.css");
+				myStyleTweaks.add("Maemo", "{#BASE_URL#}/static/mobile/css/maemo.css");
+				myStyleTweaks.tweak();
+			}
+			addEvent("onload",init);
+		</script>
+        <title>{block "title"}K.R.A portal{/block}</title>
+    </head>
+    <body>
+        <div id="header" class="mainbk">
+	    {block "header"}<a href="{#BASE_URL#}/"><h1>K.R.A portal</h1></a>{/block}
+        </div>
+        <div id="navigation">
+            <ul>
+                {block "menu"}
+                	<li>
+                		<a href="{#BASE_URL#}/mobile/">Home</a> | 
+                		<a href="{#BASE_URL#}/mobile/licences/">Licences</a>
+                	</li>
+                {/block}
+            </ul>                                           
+        </div>                  
+        <div id="messages">   
+            {block "messages"}
+	            {if isset($messages) && $messages}
+		            <ul> 
+		                {foreach $messages as $message}
+			                <li{if $message->tags} class="{$message->tags}"{/if}>
+			                    {$message}
+			                </li>                           
+		                {/foreach}
+		            </ul>
+	            {/if}
+            {/block}
+        </div>          
+        <div id="subheader">
+            {block "subheader"}<h4></h4>{/block}
+        </div>  
+        <div id="content">
+            {block "content"}{/block}
+        </div>    
+    </body>
+</html>

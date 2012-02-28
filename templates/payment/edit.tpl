@@ -1,6 +1,6 @@
-{extends "base.tpl"}
+{extends "common.tpl"}
 
-{block "body"}
+{block "content"}
 	<form method="POST" action=".">
 		<input type="hidden" name="vehicle[type]" value="vehicle" />
 		<p>
