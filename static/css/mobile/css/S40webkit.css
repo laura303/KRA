@@ -1,0 +1,6 @@
+/*compensates for large font on S40 webkit devices*/
+body {
+	font-size: 85%;
+}
+
+

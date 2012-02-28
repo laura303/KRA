@@ -1,6 +1,6 @@
-{extends "base.tpl"}
+{extends "licence/base.tpl"}
 
-{block "body"}
+{block "content"}
 	<H2>Licences:</H2>
 	<table>
 		<tr>

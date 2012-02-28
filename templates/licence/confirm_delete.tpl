@@ -1,6 +1,6 @@
-{extends "base.tpl"}
+{extends "licence/base.tpl"}
 
-{block "body"}
+{block "content"}
 	<form action="." method="POST">
 		Are you sure you want to delete this vehicle?
 		<input type="submit" value="Yes"/>

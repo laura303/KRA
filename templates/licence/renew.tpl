@@ -1,6 +1,6 @@
-{extends "base.tpl"}
+{extends "licence/base.tpl"}
 
-{block "body"}
+{block "content"}
 	<h1>Renewal Payment:</h1>
 	<form method="POST" action=".">
 		<input type="hidden" name="payment[type]" value="payment" />

@@ -1,6 +1,6 @@
-{extends "base.tpl"}
+{extends "licence/base.tpl"}
 
-{block "body"}
+{block "content"}
 	{if $licence->latest_payment() && !$licence->latest_payment()->is_notified}
 		<div class="notice">
 			Your next renewal date is on {$licence->latest_payment()->expiry_date|date_format:'%d/%m/%Y at %I:%M %p'}   
@@ -33,7 +33,7 @@
 			<input type="submit" value="Re-Issue Licence"/>
 		</form>
 	{/if}
-	{if $licence->status == 'approved' && $licence->paying_now_is_reasonable()}
+	{if ($licence->status == 'issued' || $licence->status == 'approved') & $licence->paying_now_is_reasonable()}
 		<button	onclick="window.location='{#BASE_URL#}/licences/{$type_slug}/{$licence->id}/renew/'">
 			Re-new Licence
 		</button>

@@ -1,8 +1,7 @@
-{extends "base.tpl"}
+{extends "licence/base.tpl"}
 
-{block "body"}
-	<H2>Licences:</H2>
-	<table>
+{block "content"}
+	<table class="i-table fullwidth">
 		<tr>
 			<th>Id</th>
 			<th>Applicant Name</th>

@@ -1,0 +1,24 @@
+/*increases size slightly for maemo devices*/
+body { 
+	font-size: 120%;
+}
+
+.box-flat {
+  -moz-border-radius: 10px;
+}
+
+ol.toggle-switch {
+    -moz-border-radius: 6px;
+}
+
+ol.toggle-switch li {
+    -moz-border-radius: 6px;
+}
+
+ol.toggle-switch li.label-off {
+    -moz-border-radius: 6px;
+}
+
+nav.horizontal ul, a.button {
+  -moz-border-radius: 8px;
+}

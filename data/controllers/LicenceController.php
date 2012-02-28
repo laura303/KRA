@@ -1,9 +1,18 @@
 <?php
 	class LicenceController{
+		public function choose_application_list($args){
+			$request = $args["request"];
+			global $router, $smarty;
+			checkLoggedIn($request->user);
+			
+			$smarty->assign("request", $request);
+			$smarty->display("licence/choose.tpl");
+		}
+		
 		public function apply($args){
 			$request = $args["request"];
 			global $router, $smarty;
-			userIsAdmin($request->user);
+			checkLoggedIn($request->user);
 			
 			if (isset($args[":type"])){
 				$type_ = $args[":type"];

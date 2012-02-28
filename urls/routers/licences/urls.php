@@ -1,4 +1,8 @@
 <?php
+	$application_list = new Route("$BASE_URL/applications/");
+	$application_list->setMapClass("Licence")->setMapMethod("choose_application_list");
+	$router->addRoute("application-choose", $application_list);
+
 	$application_list = new Route("$BASE_URL/applications/:type/");
 	$application_list->setMapClass("Licence")->setMapMethod("view_application_list")
 					 ->addDynamicElement( ":type", '^(drivers-licence|motor-vehicle|driving-instructor|psv-licences-badges)+$' );

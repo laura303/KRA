@@ -1,0 +1,198 @@
+@charset "utf-8";
+
+/* v1.0 | 20080212 */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+body {
+	line-height: 1;
+}
+
+a {
+	text-decoration: none;
+}
+
+
+ol, ul {
+	list-style: none;
+}
+
+#navigation li {
+	display: inline;
+}
+
+.menu li {
+    background-color: #e8e8e8;
+    margin-bottom: 3px;
+    padding: 10px 0px 10px 0px;
+    width: 100%;
+    border-right: 2px solid white;
+    #border-left: 2px solid white;
+
+}
+
+.menu li a {
+    padding-left:10px;
+    display: block;  
+    line-height: 2.0em; 
+    text-align: left;
+    
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+	
+	
+}
+
+td {
+	padding: 10px;
+    border-bottom: 2px solid white;
+    border-right: 2px solid white;
+    background-color: #e4e8e8;
+}
+
+td a {
+    display: block;
+    line-height: 2.0em;
+    width: 100%;
+    text-align: left;
+}
+td.price {
+    text-align: right;
+}
+
+
+input {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.fieldWrapper {
+	margin-bottom: 10px;
+}
+
+.errorlist {
+    width: 100%;
+    background-color: #ffff66;
+    padding: 3px;
+}
+
+/* CSS Document */
+body { 
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+form label {
+    display: block;
+    font-weight:bold;
+    margin-bottom: 10px;
+}
+
+#header { 
+	padding: 10px 0 10px 0;
+	border-bottom: 5px solid yellow;
+}
+
+#header a h1 { 
+	padding-left: 5px;
+}
+
+
+#messages ul {
+	background-color: yellow;
+    padding: 5px 0px 5px 10px;	
+}
+#navigation, #content, #messages, #subheader, #footer, #header h1 { 
+	margin: 0 auto; 
+	#width: 250px;
+	text-align: left;
+}
+
+#navigation, #content, #subheader, #footer, #header h1 {
+	padding: 10px 5px;	
+}
+
+#header h1 {
+	color: white;
+	font-size: 150%;
+	padding: 0px 0px;
+	
+}
+
+h2 {
+	font-size: 130%;
+}
+#content p { 
+	font-size:15px;
+	line-height:18px;
+}
+
+.separator{ 
+	width:100%; 
+	height:1px;
+}
+
+/*
+ * 5. BUTTON
+ * 
+ */
+/*
+ * STYLED BUTTON
+ * 
+ */
+/* change button width to auto for full-width button or customise width */
+/* style has been modified to work with 'hovering' script */
+/* see documentation for details */
+a.button {
+  display: block;
+  line-height: 2.5em;
+  background-color: #5796CA;
+  text-align: center;
+  border-bottom: 2px solid #d8d8d8;
+  border-left: 1px solid #d8d8d8;
+  border-right: 1px solid #d8d8d8;
+  border-top: 1px solid #d8d8d8;
+  text-decoration: none;
+  color: #ffffff;
+  #padding: 0px;
+  width: 100%;
+  margin-bottom: 1em;
+  /* if not using the 'hovering' script, rename this style to ':hover' */ }
+a.button.hovering {
+    background: #c0da07 url(../images/button.png) repeat-x bottom;
+    color: white;
+    outline: none; }
+
+
+/* onbile dinamic styles */
+
+.bodybk{background-color:#F5F5F5;}
+.cmainbk{color:#F5F5F5;}
+.mainbk{ background-color:#445E63;}
+.icobk{color:#2C4A33;}
+.titlecolor{ color:#2C4A33;}
+.txtcolor{ color:#040F05;}
+.uppertitlecolor{ color:#2C4A33;}
+.headlinecolor{color:#2C4A33;}
+
+

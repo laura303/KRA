@@ -1,27 +1,25 @@
-{extends 'auth/auth_layout.tpl'}
+{extends 'base.tpl'}
 {block 'title'}Authentication{/block}
 
-{block "main"}
-    <h1>Login</h1>
-    
-    {if isset($errors)}
-        <div id="errors">{$errors}</div>
-    {/if}
-    
-    <div id="regbox">
-        <form name="newUser" action="." method="post">
-            <p>
-                <label>Username:</label>
-                <input type="text" name="username" />
-            </p>
-            <p>
-                 <label>Password:</label>
-                 <input type="password" name="password" />
-            </p>
-            <p>
-                <label>&nbsp;</label>
-                <input type="submit" value="Login" class="submit" />
-            </p>
-        </form>
-    </div>
+{block "body-container"}
+    <div id="login-container" style="">
+		<div id="login" class="i-box">
+			<div class="login-title">
+				<h1>KRA</h1>
+			</div>
+			{if isset($errors)} <div id="errors">{$errors}</div> {/if}
+			<form name="login-form" id="login-form" method="POST" action="." novalidate="novalidate">
+				<fieldset>
+					<section>
+						<input class="i-text required" type="text" name="username" placeholder="Username">
+					</section>
+					<section>
+						<input class="i-text required" type="password" name="password" placeholder="Password">
+					</section>
+				</fieldset>
+				<a href="#">Forgot your password?</a>
+				<input class="i-button" type="submit" value="Login">
+			</form>
+		</div>
+	</div>
 {/block}

@@ -6,30 +6,27 @@
 					$message = "Page not Found";
 					$long_message = "The requested URL $url was not found on this server.";
 				}
+				$template_name = '404.tpl';
 			}else if ($type == '500'){
 				if (!$message){
 					$message = "Server Error.";
 					$long_message = "An error occured while trying to load page [$url].";
 				}
+				$template_name = '500.tpl';
 			}else{
 				if (!$message){
 					$message = "Server Error";
 					$long_message = "An error occured while trying to load page.";
 				}
+				$template_name = '500.tpl';
 			}
-			?>
-			<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
-				<html>
-					<head>
-						<title><?php echo $type." ".$message ?></title>
-					</head>
-					<body>
-						<h1><?php echo $message ?></h1>
-						<p><?php echo $long_message ?></p>
-					</body>
-				</html>
-			<?php
-			global $DEBUG;
+			global $DEBUG, $smarty;
+			
+			$smarty->assign("message", "$message");
+			$smarty->assign("long_message", $long_message);
+			
+			$smarty->display($template_name);
+			
 			if ($DEBUG){
 				die();
 			}
