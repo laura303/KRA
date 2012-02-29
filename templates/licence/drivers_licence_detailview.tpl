@@ -19,7 +19,4 @@
 	<p>
 		Driving Test Place: {$licence->driving_test_place}
 	</p>
-	<p>
-		Status: <b>{$licence->status|capitalize}</b>
-	</p>
 {/block}

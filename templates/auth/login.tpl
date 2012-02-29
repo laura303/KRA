@@ -17,7 +17,8 @@
 						<input class="i-text required" type="password" name="password" placeholder="Password">
 					</section>
 				</fieldset>
-				<a href="#">Forgot your password?</a>
+				<a href="{#BASE_URL#}/forgot-password/">Forgot your password?</a>
+				<a href="{#BASE_URL#}/register/">Registered?</a>
 				<input class="i-button" type="submit" value="Login">
 			</form>
 		</div>

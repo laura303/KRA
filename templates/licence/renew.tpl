@@ -15,6 +15,10 @@
 			<input name="payment[mpesa_code]" class="text"/>
 		</p>
 		<p>
+			<label>Amount Paid:</label>
+			<input name="payment[amount_paid]" class="text"/>
+		</p>
+		<p>
 			<label>Renewal Duration:</label>
 			<select name="payment[renewal_duration]">
 				<option value="0">Select:</option>

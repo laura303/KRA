@@ -72,6 +72,7 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fullname` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `password` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `activation_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -87,13 +88,12 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`username`, `password`, `email`, `activation_token`, `last_activation_request`, `lost_password_request`, `is_active`, `sign_up_date`, `last_sign_in`) VALUES
-('dinjugu', 'c201722a3f1689cbafae1be003400bafe37ef5482462114c7f505347b396b8122', 'dinjugu@gmail.com', 'bce86b6df8d51bc07aac5c3d01db2f40', 1327948989, 0, '1', 1327948989, 0),
-('kanarelo', '3a1b91937876839371be7f519148384408f1c8985edbbaef80856c3e90e5499dc', 'kanarelo@gmail.com', NULL, NULL, NULL, '1', NULL, NULL),
-('onesmus', '0b6a5e65e6beddfaacf11907e551b0a98eb43bcc533472d1b1a22dbfd7098164a', 'mkmeonda@gmail.com', NULL, NULL, NULL, '1', NULL, NULL),
-('nes', '020cabf59e68ad5c739afd002f57abc8f7b67b09a4816d36900d2dcc1e630439c', 'nesi@gmail.com', NULL, NULL, NULL, '1', NULL, NULL),
-('tim', '48f859ea21de313d1369273c5114d935518fc93e5d5a3b3dc917f8712cbad3ed4', 'tim@gmail.com', NULL, NULL, NULL, '1', NULL, NULL),
-('monda', '5cd4fff22cf81d2a3e738d0f9433b8a6109cc9f4884e3529e77041de2e747a7db', 'mkemonda@yahoo.com', NULL, NULL, NULL, '1', NULL, NULL);
+INSERT INTO `user` (`fullname`,`username`, `password`, `email`, `activation_token`, `last_activation_request`, `lost_password_request`, `is_active`, `sign_up_date`, `last_sign_in`) VALUES
+('Laura Agutu', 'laura', 'c201722a3f1689cbafae1be003400bafe37ef5482462114c7f505347b396b8122', 'laura.agutu@gmail.com', 'bce86b6df8d51bc07aac5c3d01db2f40', 1327948989, 0, '1', 1327948989, 0),
+('Ita Tikani','ita', '3a1b91937876839371be7f519148384408f1c8985edbbaef80856c3e90e5499dc', 'kanarelo@gmail.com', NULL, NULL, NULL, '1', NULL, NULL),
+('Ian Nes', 'onesmus', '0b6a5e65e6beddfaacf11907e551b0a98eb43bcc533472d1b1a22dbfd7098164a', 'mkmeonda@gmail.com', NULL, NULL, NULL, '1', NULL, NULL),
+('Yuppy', 'nes', '020cabf59e68ad5c739afd002f57abc8f7b67b09a4816d36900d2dcc1e630439c', 'nesi@gmail.com', NULL, NULL, NULL, '1', NULL, NULL),
+('Grumpy', 'monda', '5cd4fff22cf81d2a3e738d0f9433b8a6109cc9f4884e3529e77041de2e747a7db', 'mkemonda@yahoo.com', NULL, NULL, NULL, '1', NULL, NULL);
 
 --
 -- Constraints for dumped tables

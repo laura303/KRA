@@ -44,7 +44,7 @@
             {/block}
         </div>          
         <div id="subheader">
-            {block "subheader"}<h4></h4>{/block}
+            {block "subheader"}Welcome, {$request->user->username}{/block}
         </div>  
         <div id="content">
             {block "content"}{/block}

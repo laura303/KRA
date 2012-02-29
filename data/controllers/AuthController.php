@@ -144,6 +144,7 @@
 			if($request->method == "POST") {
 				$email = trim($request->POST["email"]);
 				$username = trim($request->POST["username"]);
+				$fullname = trim($request->POST["fullname"]);
 				$password = trim($request->POST["password"]);
 				$confirm_pass = trim($request->POST["passwordc"]);
 				$errors = array();
@@ -218,7 +219,8 @@
 						if(!isset($errors["mail_failure"])) {
 							$user = $dao->createUser(
 								$unclean_username, 
-								$clean_username, 
+								$clean_username,
+								$fullname, 
 								$secure_pass, 
 								$clean_email, 
 								$activation_token, 

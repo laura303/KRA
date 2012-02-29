@@ -10,13 +10,10 @@
 						<a href="{#BASE_URL#}/dashboard/" class="active" id="dashboard-m"><span class="dashboard-32" title="Dashboard area">Home</span></a>
 					</li>
 					<li>
-						<a href="{#BASE_URL#}/applications/" id="elements-m"><span class="files-32" title="Elements area">Applications</span></a>
+						<a href="{#BASE_URL#}/applications/" id="elements-m"><span class="files-32" title="Elements area">Licences</span></a>
 					</li>
 					<li>
 						<a href="{#BASE_URL#}/payments/" id="forms-m"><span class="forms-32" title="Forms area">Payments</span></a>
-					</li>
-					<li>
-						<a href="{#BASE_URL#}/vehicles/" id="file-m"><span class="file-32" title="File manager area">Feedback</span></a>
 					</li>
 				</ul>
 			</div>
@@ -33,7 +30,7 @@
 							<a class="profile-16 tt-top-center"></a>
 						</li>
 						<li>
-							<a href="{#BASE_URL#}/auth/logout/" id="logout" class="logout-16 tt-top-center">logout</a>
+							<a href="{#BASE_URL#}/logout/" id="logout" class="logout-16 tt-top-center">logout</a>
 						</li>
 					</ul>
 					<div class="clearfix"></div>
@@ -52,18 +49,7 @@
 							</form>
 						</div>
 						<ul>
-							<li>
-								<a href="{#BASE_URL#}/orders/undelivered/" class="tt-top-center">7</a><span>undelivered orders</span>
-							</li>
-							<li>
-								<a href="{#BASE_URL#}/orders/new/" class="blue tt-top-center">12</a><span>new orders</span>
-							</li>
-							<li>
-								<a href="{#BASE_URL#}/orders/delivered/" class="green tt-top-center">3</a><span>delivered orders</span>
-							</li>
 						</ul>
-						<a class="comment-16 tt-top-center" id="show-modal">modal</a>
-						<a class="info-16 tt-top-center" id="add-notify">notifications</a>
 						<div class="clearfix"></div>
 					{/block}
 				</div>

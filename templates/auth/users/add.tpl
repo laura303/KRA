@@ -10,6 +10,10 @@
 			<input type="text" name="user[username]" value="" />
 		</p>
 		<p>
+			<label for="id_username">Full Name:</label>
+			<input type="text" name="user[fullname]" value="" />
+		</p>
+		<p>
 			<label for="id_password">Password:</label>
 			<input id="id_password" type="password" name="user[password]" value="" />
 		</p>

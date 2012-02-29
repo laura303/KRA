@@ -8,7 +8,7 @@ class Model_Licence extends RedBean_SimpleModel{
 		}
 		return null;
 	}
-	
+		
 	public function latest_payment_date() {
 		$latest_payment = $this->latest_payment();
 		if($latest_payment){
@@ -37,6 +37,15 @@ class Model_Licence extends RedBean_SimpleModel{
 			return ($diff/60/60/24) <= 30;
 		}
 		return false;
+	}
+	
+	public function create_e_slip() {
+		$latest_payment = $this->latest_payment();
+		if ($latest_payment){
+			createPDF($this->bean, $latest_payment);
+		}else{
+			PageError::show('404',NULL,'Unknown action', "No Payments made yet.");
+		}
 	}
 }	
 ?>

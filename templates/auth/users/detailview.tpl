@@ -6,6 +6,9 @@
 		Username: {$user->username}
 	</p>
 	<p>
+		Full name: {$user->fullname}
+	</p>
+	<p>
 		Email: {$user->email}
 	</p>
 	<p>

@@ -47,4 +47,5 @@
 	$MEDIA_URL = '/static/';
 	
 	$USER_REGISTRATION = true;
+	$UPLOAD_DIRECTORY = __DIR__.'/../media/uploads';
 ?>

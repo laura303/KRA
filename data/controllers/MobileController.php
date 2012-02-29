@@ -4,6 +4,11 @@
 			$request = $args["request"];
 			global $router, $smarty;
 			
+			if(!$request->user->isUserLoggedIn()) {
+				redirectToPage('auth-mobile-login'); 
+				die();
+			}
+			
 			$smarty->assign("request", $request);
 			$smarty->assign("licences", R::find('licence'));
 			return $smarty->display("mobile/index.html");
@@ -12,7 +17,11 @@
 		public function view($args){
 			$request = $args["request"];
 			global $smarty;
-			checkLoggedIn($request->user);
+			
+			if(!$request->user->isUserLoggedIn()) {
+				redirectToPage('auth-mobile-login'); 
+				die();
+			}
 			
 			if ($request->method == "GET"){
 				$id = $args[":id"];
@@ -30,6 +39,11 @@
 		public function renew($args){
 			$request = $args["request"];
 			global $router, $smarty;
+			
+			if(!$request->user->isUserLoggedIn()) {
+				redirectToPage('auth-mobile-login'); 
+				die();
+			}
 			
 			if (isset($args[":id"])){
 				$id = $args[":id"];

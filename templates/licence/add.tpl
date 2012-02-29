@@ -3,10 +3,10 @@
 {block "content"}
 	<div class="c-elements">		
 		<div class="box-element">
-			<div class="box-head-light">Data Table<a href="" class="collapsable"></a></div>
+			<div class="box-head-light">Apply for {$readable_type|capitalize} Licence<a href="" class="collapsable"></a></div>
 			<div class="box-content no-padding">
-				<form method="POST" action="." class="i-validate" novalidate="novalidate">
-					<input type="hidden" name="licence[type]" value="licence" />
+				<form method="POST" action="." class="i-validate" novalidate="novalidate" enctype="multipart/form-data">
+					<input type="hidden" name="licence[type]" value="{$db_type}" />
 					<fieldset>
 						{block 'form-items'}
 						{/block}

@@ -18,6 +18,12 @@
 	$licence_list->setMapClass("Licence")->setMapMethod("view_list")
 				 ->addDynamicElement( ":type", '^(drivers-licence|motor-vehicle|driving-instructor|psv-licences-badges)+$' );
 	$router->addRoute( "licence-list", $licence_list );
+
+	$licence_view = new Route("$BASE_URL/licences/:type/:id/e-slip/");
+	$licence_view->setMapClass("Licence")->setMapMethod("view_eslip")
+				   ->addDynamicElement( ":type", '^(drivers-licence|motor-vehicle|driving-instructor|psv-licences-badges)+$' )
+				   ->addDynamicElement( ":id", '^\d+$' );
+	$router->addRoute("licence-view-eslip",$licence_view);
 	
 	$licence_apply = new Route("$BASE_URL/licences/:type/apply/");
 	$licence_apply->setMapClass("Licence")->setMapMethod("apply")
@@ -29,6 +35,7 @@
 				   ->addDynamicElement( ":type", '^(drivers-licence|motor-vehicle|driving-instructor|psv-licences-badges)+$' )
 				   ->addDynamicElement( ":id", '^\d+$' );
 	$router->addRoute("licence-view",$licence_view);
+	
 	
 	$licence_action = new Route("$BASE_URL/licences/:type/:id/notification/close/");
 	$licence_action->setMapClass("Licence")->setMapMethod("notification_close")

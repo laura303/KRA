@@ -1,12 +1,13 @@
 <?php
 class AuthDAO{
-	public function createUser($unclean_username, $clean_username, $secure_pass, $clean_email,
+	public function createUser($unclean_username, $clean_username, $fullname, $secure_pass, $clean_email,
 		$activation_token, $lastActivationRequest, $lostPasswordRequest,$user_active, $group_id){
 		
 		$user = R::dispense("user");
 		$user->username = $clean_username;
 		$user->password = $secure_pass; 
 		$user->email = $clean_email;
+		$user->fullname = $fullname;
 		$user->activation_token = $activation_token;
 		$user->last_activation_request = $lastActivationRequest;
 		$user->lost_password_request = $lostPasswordRequest;

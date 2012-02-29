@@ -1,31 +1,4 @@
 <?php
-//============================================================+
-// File name   : example_003.php
-// Begin       : 2008-03-04
-// Last Update : 2010-08-08
-//
-// Description : Example 003 for TCPDF class
-//               Custom Header and Footer
-//
-// Author: Nicola Asuni
-//
-// (c) Copyright:
-//               Nicola Asuni
-//               Tecnick.com LTD
-//               Manor Coach House, Church Hill
-//               Aldershot, Hants, GU12 4RQ
-//               UK
-//               www.tecnick.com
-//               info@tecnick.com
-//============================================================+
-
-/**
- * Creates an example PDF TEST document using TCPDF
- * @package com.tecnick.tcpdf
- * @abstract TCPDF - Example: Custom Header and Footer
- * @author Nicola Asuni
- * @since 2008-03-04
- */
 
 require_once('../config/lang/eng.php');
 require_once('../tcpdf.php');

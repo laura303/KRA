@@ -18,9 +18,16 @@
 				{foreach $users as $user}
 					<tr class="dark">
 						<td>{$user->id}</td>
-						<td><a href="{#BASE_URL#}/admin/users/{$user->id}/">{$user->username}</a></td>
+						<td>{$user->username}</td>
 						<td>{$user->email}</td>
-						<td></td>
+						<td>
+							<a href="{#BASE_URL#}/admin/users/{$user->id}/">View</a>
+							{if $request->user->belongsToGroups('admin')}
+								|
+								<a href="{#BASE_URL#}/admin/users/{$user->id}/edit/">Edit</a> |
+								<a href="{#BASE_URL#}/admin/users/{$user->id}/delete/">Delete</a>
+							{/if}
+						</td>
 					</tr>
 				{/foreach}
 			</tbody>

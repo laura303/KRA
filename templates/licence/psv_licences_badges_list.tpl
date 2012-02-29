@@ -1,6 +1,12 @@
 {extends "licence/base.tpl"}
 
 {block "content"}
+<br/>
+	{if !$request->user->belongsToGroups('admin')}
+		<a class="button" href="{#BASE_URL#}/licences/{$type}/apply/">Apply for Licence</a>
+	{/if}
+<br/>
+<br/>
 <div class="box-element">
     <div class="box-head-light">Users<a href="" class="collapsable"></a></div>
     <div class="box-content no-padding">
@@ -24,9 +30,12 @@
 						<td>{$licence->driving_test_date}</td>
 					<td>{$licence->driving_test_place}</td>
 					<td>
-						<a href="{#BASE_URL#}/licences/{$licence->id}/">R</a> |
-						<a href="{#BASE_URL#}/licences/edit/{$licence->id}/">U</a> |
-						<a href="{#BASE_URL#}/licences/delete/{$licence->id}/">D</a>
+						<a href="{#BASE_URL#}/licences/{$type}/{$licence->id}/">View</a>
+						{if $request->user->belongsToGroups('admin')}
+							|
+							<a href="{#BASE_URL#}/licences/{$type}/{$licence->id}/edit/">Update</a> |
+							<a href="{#BASE_URL#}/licences/{$type}/{$licence->id}/delete/">Delete</a>
+						{/if}
 					</td>
 				</tr>
 			{/foreach}

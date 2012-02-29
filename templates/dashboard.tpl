@@ -54,41 +54,6 @@
 					<div class="clearfix"></div>
 				</div>
 			</div>
-			<div class="box-element">
-				<div class="box-head-light box-head-icon info-16">
-					Notification board<a href="" class="collapsable"></a>
-				</div>
-				<div class="box-content">
-					<ul class="notifications">
-						<li>
-							<div>
-								321<span>total visitors</span><span class="green">+13%</span>
-							</div>
-						</li>
-						<li>
-							<div>
-								321<span>total visitors</span><span class="red">-7%</span>
-							</div>
-						</li>
-						<li>
-							<div>
-								321<span>total visitors</span><span class="green">+13%</span>
-							</div>
-						</li>
-						<li>
-							<div>
-								321<span>total visitors</span><span class="grey">0%</span>
-							</div>
-						</li>
-						<li>
-							<div>
-								321<span>total visitors</span><span class="green">-2%</span>
-							</div>
-						</li>
-					</ul>
-					<div class="clearfix"></div>
-				</div>
-			</div>
 		{else}
 			<div class="bredcrumbs">
 				<ul>
@@ -124,6 +89,21 @@
 							<li>Application #{$application->id}</li>
 						{foreachelse}
 							<li>No Applications Made</li>
+						{/foreach}
+					</ul>
+				</div>
+			</div>
+			<div class="box-element">
+				<div class="box-head-light box-head-icon">
+					<a href="" class="collapsable"></a>
+					Payments
+				</div>
+				<div>
+					<ul>
+						{foreach $payments as $payment}
+							<li>{$payment->message}</li>
+						{foreachelse}
+							<li>No Payments Made</li>
 						{/foreach}
 					</ul>
 				</div>

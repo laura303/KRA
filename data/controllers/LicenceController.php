@@ -11,14 +11,18 @@
 		
 		public function apply($args){
 			$request = $args["request"];
-			global $router, $smarty;
+			global $router, $smarty, $fileUploader;
 			checkLoggedIn($request->user);
 			
 			if (isset($args[":type"])){
 				$type_ = $args[":type"];
 				$type = str_replace('-', '_', $type_);
+				$db_type = str_replace('-', '', $type_);
+				
 				$smarty->assign("type", $type);
-				$smarty->assign("licence", R::dispense('licence'));
+				$smarty->assign("readable_type", str_replace('-', ' ', $type_));
+				$smarty->assign("db_type", $db_type);
+				$smarty->assign("licence", R::dispense($db_type));
 				$template_name = 'licence/'.$type.'_add.tpl';
 			}
 			
@@ -26,8 +30,17 @@
 				$new_licence = R::graph($request->POST['licence']);
 				$new_licence->type = $type_;
 				
+				$fileUploader->save(function($file) {
+					global $UPLOAD_DIRECTORY, $new_licence;
+					$upload_dir = $UPLOAD_DIRECTORY."/licences/particulars/";
+					if(!file_exists($upload_dir)){
+						mkdir($upload_dir, null, true);
+					}
+					return $upload_dir;
+				});
+				
 				if (R::store($new_licence)){
-					$request->user->ownLicence[] = $new_licence;
+					$request->user->{'own'.ucfirst(str_replace('-', '', $type_))}[] = $new_licence;
 					R::store($request->user);
 					redirectToPage('licence-list', array(':type' => $type_ ));
 				}
@@ -47,11 +60,12 @@
 			if (isset($args[":type"])){
 				$type_ = $args[":type"];
 				$type = str_replace('-', '_', $type_);
+				$db_type = str_replace('-', '', $type_);
 			}
 			
 			if (isset($args[":id"])){
 				$id = $args[":id"];
-				$licence = R::load('licence', $id);
+				$licence = R::load($db_type, $id);
 				if (!$licence->id){
 					PageError::show('404',NULL,'Licence not found!', "Licence with Id: $id not found!");
 					die();
@@ -72,6 +86,8 @@
 			if (isset($args[":type"])){
 				$type_ = $args[":type"];
 				$type = str_replace('-', '_', $type_);
+				$db_type = str_replace('-', '', $type_);
+				
 				$smarty->assign("type", $type_);
 					
 				$template_name = 'licence/'.$type.'_add.tpl';
@@ -79,7 +95,7 @@
 			
 			if (isset($args[":id"])){
 				$id = $args[":id"];
-				$licence = R::load('licence', $id);
+				$licence = R::load($db_type, $id);
 				if (!$licence->id){
 					PageError::show('404',NULL,'Licence not found!', "Licence with Id: $id not found!");
 					die();
@@ -88,7 +104,7 @@
 			
 			if (isset($args[":action"])){
 				$action = $args[":action"];
-				if (in_array($action, array('approve', 'reject', 'revoke', 'issue', 'renew'))){
+				if (in_array($action, array('approve', 'reject', 'revoke', 'issue', 'renew', 'e-slip'))){
 					if (in_array($action, array('approve', 'reject', 'revoke', 'issue'))){
 						checkLoggedIn($request->user);
 					}
@@ -126,6 +142,8 @@
 							}
 							$smarty->assign("request", $request);
 							return $smarty->display($template_name);
+						}else if ($action == 'e-slip'){
+							$licence->create_e_slip();
 						}
 					}
 				} 
@@ -135,7 +153,7 @@
 			}
 			PageError::show('404',NULL,'Forbidden', "Action Forbidden");
 		}
-
+		
 		public function view($args){
 			$request = $args["request"];
 			global $smarty;
@@ -145,40 +163,45 @@
 				$type_ = $args[":type"];
 				$type = str_replace('-', '_', $type_);
 				$template_name = 'licence/'.$type.'_detailview.tpl';
+				$db_type = str_replace('-', '', $type_);
+				$smarty->assign("type", $type_);
+				$smarty->assign("db_type", $db_type);
 				
 				if ($request->method == "GET"){
 					$id = $args[":id"];
-					$licence = R::load('licence', $id);
-					$licence->type = $type_;
+					$licence = R::load($db_type, $id);
 					if (!$licence->id){
 						PageError::show('404',NULL,'Licence not found!', "Licence with Id: $id not found!");
 						die();
 					}
-					$licence->is_expired();
-	
 					$smarty->assign("licence", $licence);
 					$smarty->assign("type", $type);
 					$smarty->assign("type_slug", $type_);
 				}
 			}
+			
 			$smarty->assign("request", $request);
 			$smarty->display($template_name);
 		}
 		
 		public function edit($args){
 			$request = $args["request"];
-			global $smarty;
+			global $smarty, $fileUploader;
 			checkLoggedIn($request->user);
 			
 			if (isset($args[":type"])){
 				$type_ = $args[":type"];
 				$type = str_replace('-', '_', $type_);
 				$template_name = 'licence/'.$type.'_add.tpl';
+				$smarty->assign("readable_type", str_replace('-', ' ', $type_));
+				$db_type = str_replace('-', '', $type_);
 				$smarty->assign("type", $type_);
+				$smarty->assign("db_type", $db_type);
+				
 			}
 
 			$id = $args[":id"];
-			$licence = R::load('licence', $id);
+			$licence = R::load($db_type, $id);
 			
 			if (!$licence->id){
 				PageError::show('404',NULL,'Licence not found!', "Licence with Id: $id not found!");
@@ -189,6 +212,15 @@
 				$edited_licence = R::graph($request->POST['licence']);
 				$edited_licence->id = $id;
 				$edited_licence->type = $type_;
+				
+				$fileUploader->save(function($file) {
+					global $UPLOAD_DIRECTORY, $edited_licence;
+					$upload_dir = $UPLOAD_DIRECTORY."/licences/particulars/";
+					if(!file_exists($upload_dir)){
+						mkdir($upload_dir, null, true);
+					}
+					return $upload_dir;
+				});
 				
 				if (R::store($edited_licence)){
 					redirectToPage('licence-list', array(':type' => $type_ ));
@@ -225,6 +257,7 @@
 				$type_ = $args[":type"];
 				$type = str_replace('-', '_', $type_);
 				$template_name = 'licence/'.$type.'_list.tpl';
+				$db_type = str_replace('-', '', $type_);
 				$smarty->assign("type", $type_);
 			}
 			
@@ -233,10 +266,10 @@
 			}
 			
 			if ($request->method == "GET"){
-				if ($status){
-					$licences = R::find('licence', 'status = ?', array($status));
+				if($request->user->belongsToGroups('admin')){
+					$licences = R::find($db_type);
 				}else{
-					$licences = R::find('licence');
+					$licences = R::find($db_type, 'user_id = ?', array($request->user->id));
 				}
 				$smarty->assign("licences", $licences);
 			}
@@ -254,12 +287,13 @@
 			if (isset($args[":type"])){
 				$type_ = $args[":type"];
 				$type = str_replace('-', '_', $type_);
+				$db_type = str_replace('-', '', $type_);
 				$smarty->assign("type", $type_);
 			}
 			
 			if ($request->method == "POST"){
 				$id = $args[":id"];
-				$licence = R::load('licence', $id);
+				$licence = R::load($db_type, $id);
 				
 				if (!$licence->id){
 					PageError::show('404',NULL,'Licence not found!', "Licence with Id: $id not found!");

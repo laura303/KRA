@@ -1,10 +1,5 @@
 {extends "licence/add.tpl"}
 
-<section>
-		<div class="section-left-s"><label for="id_applicant_title">Applicant Title:</label></div>
-	    <div class="section-right">{html_options options=$titles selected=$licence->applicant_title name="licence[applicant_title]"}</div>
-	</section>
-
 {block 'form-items'}
 	<section>
 		<div class="section-left-s"><label>Motor Vehicle Type:</label></div>
@@ -75,11 +70,6 @@
 	<section>
 		<div class="section-left-s"><label>Reg No:</label></div>
 		<input type="text" class="i-text required" class="text" name="licence[reg_no]"  value="{$licence->reg_no}"/>
-		<div class="clearfix"></div>
-	</section>
-	<section>
-		<div class="section-left-s"><label>New Vehicle:</label></div>
-		<input type="text" class="i-text required" class="text" name="licence[new]"  value="{$licence->new}"/>
 		<div class="clearfix"></div>
 	</section>
 {/block}

@@ -8,37 +8,30 @@
 	2. Confirm request. - Generate new password, update the db then email the user
 	3. Deny request. - Close the request
 *}
-{extends 'auth/auth_layout.tpl'}
+{extends 'base.tpl'}
+{block 'title'}Authentication{/block}
 
-{block "title"}Forgot Password{/block}
-{block "main"}
-    <h1>Forgot Password</h1>
-
-    {if isset($errors)}
-    	<div id="errors">
-        	{$errors}
-        </div>
-    {/if}
-    {if isset($success_message)} 
-        <div id="success">
-            <p>{$success_message}</p>
-        </div>
-    {/if}
+{block "body-container"}
+    {if isset($errors)} <div id="errors"> {$errors} </div> {/if}
+    {if isset($success_message)} <div id="success"> <p>{$success_message}</p> </div> {/if}
     
-    <div id="regbox">
-        <form name="newLostPass" action="." method="post">
-	        <p>
-	            <label>Username:</label>
-	            <input type="text" name="username" />
-	        </p>
-	        <p>    
-	            <label>Email:</label>
-	            <input type="text" name="email" />
-	        </p>
-	        <p>
-	            <label>&nbsp;</label>
-	            <input type="submit" value="Login" class="submit" />
-	        </p>
-        </form>
+    <div id="login-container" style="">
+		<div id="login" class="i-box">
+			<div class="login-title">
+				<h1>KRA - Forgot password</h1>
+			</div>
+			{if isset($errors)} <div id="errors">{$errors}</div> {/if}
+			<form name="login-form" id="login-form" method="POST" action="." novalidate="novalidate">
+				<fieldset>
+					<section>
+						<input class="i-text required" type="text" name="username" placeholder="Username">
+					</section>
+					<section>
+						<input class="i-text required" type="password" name="password" placeholder="Password">
+					</section>
+				</fieldset>
+				<input class="i-button" type="submit" value="Login">
+			</form>
+		</div>
     </div>
 {/block}
